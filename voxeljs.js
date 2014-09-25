@@ -61,7 +61,7 @@ function vjs_resetPosition() {
 function vjs_drawText(text) {    
     vjs_ctx.save();
     vjs_ctx.clearRect(0, 0, vjs_width, vjs_height);
-    vjs_ctx.font = "30px Arial";
+    vjs_ctx.font = "20px Arial";
     vjs_ctx.fillText(text, 10, 50);
     vjs_ctx.restore();
 }
@@ -150,11 +150,11 @@ function vjs_showInfo() {
 vjs_attempts = 0;
 function vjs_start() {
     if (vjs_attempts === 0) {
-        vjs_drawText('Starting...');
+        vjs_drawText('Loading Map...');
     }
     
-    //keep trying for 10s before giving up
-    if (vjs_attempts < 20) {
+    //keep trying for 120s before giving up
+    if (vjs_attempts < 240) {
         if (vjs_heightmap != null && vjs_texturemap != null) {
             
             //start the engine
@@ -165,7 +165,7 @@ function vjs_start() {
             setTimeout(vjs_start, 500);
         }
     } else {
-        vjs_drawText('Timed out loading maps. Try reloading page...');
+        vjs_drawText('Timed out loading maps after 2min. Try reloading page...');
     }
 }
 
